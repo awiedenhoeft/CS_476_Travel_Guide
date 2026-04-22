@@ -4,8 +4,8 @@ INSERT INTO users (username, fullName, userEmail, passwordHash, travelStyle)
 VALUES
 ('alex123', 'Alex Johnson', 'alex@example.com', 'hashed_pw_1', 'adventure'),
 ('katie_ui', 'Katie Smith', 'katie@example.com', 'hashed_pw_2', 'relaxation'),
-('josh_dev', 'Joshua Lee', 'josh@example.com', 'hashed_pw_3', 'budget'),
-('kevin_api', 'Kevin Brown', 'kevin@example.com', 'hashed_pw_4', 'luxury');
+('josh_dev', 'Joshua Lee', 'josh@example.com', 'hashed_pw_3', 'culture'),
+('kevin_api', 'Kevin Brown', 'kevin@example.com', 'hashed_pw_4', 'social');
 
 /* SAMPLE LOCATIONS */
 
@@ -20,10 +20,10 @@ VALUES
 
 INSERT INTO experiences (locationID, title, experienceDescription, estimatedCost)
 VALUES
-(1, 'Eiffel Tower Visit', 'Climb and enjoy panoramic views of Paris.', '30.00'),
-(2, 'Shibuya Crossing Walk', 'Experience the busiest crossing in the world.', '0.00'),
-(3, 'Central Park Picnic', 'Relax in NYC’s most famous park.', '15.00'),
-(4, 'Colosseum Tour', 'Guided tour of ancient Roman amphitheater.', '45.00');
+(1, 'Eiffel Tower Visit', 'Climb and enjoy panoramic views of Paris.', '$$'),
+(2, 'Shibuya Crossing Walk', 'Experience the busiest crossing in the world.', 'Free'),
+(3, 'Central Park Picnic', 'Relax in NYC’s most famous park.', '$'),
+(4, 'Colosseum Tour', 'Guided tour of ancient Roman amphitheater.', '$$');
 
 /* SAMPLE TAGS */
 
@@ -92,5 +92,3 @@ VALUES
 (1, 5, 1, 1), -- Eiffel Tower on Day 1
 (1, 8, 3, 1), -- Colosseum on Day 3
 (2, 6, 1, 1); -- Shibuya on Day 1
-
-

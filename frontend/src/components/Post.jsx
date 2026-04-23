@@ -1,7 +1,4 @@
-import React from "react";
-
-
-function Post({post}) {
+export default function Post({post}) {
     return (
         <div className = "post">
             <h2>{post.title}</h2>
@@ -18,3 +15,4 @@ function Post({post}) {
         </div>
     )
 }
+

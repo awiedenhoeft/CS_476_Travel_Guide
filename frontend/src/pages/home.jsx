@@ -1,3 +1,12 @@
+import experiences from "../../experiences"
+import Post from "../components/Post"
+
 export default function Home() {
-    return <h1>Home</h1>
+    return (
+        <div>
+            {experiences.map((exp) => (
+                <Post key={exp.id} post={exp} />
+            ))}
+        </div>
+    );
 }

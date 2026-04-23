@@ -1,0 +1,166 @@
+SET FOREIGN_KEY_CHECKS=0;
+
+/* USERS */
+
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+    userID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    fullName VARCHAR(100),
+    userEmail VARCHAR(100) UNIQUE NOT NULL,
+    passwordHash VARCHAR(255) NOT NULL,
+    travelStyle VARCHAR(50),
+    timeCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+/* LOCATIONS */
+
+DROP TABLE IF EXISTS locations;
+
+CREATE TABLE locations (
+    locationID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    city VARCHAR(100),
+    state VARCHAR(100),
+    country VARCHAR(100),
+    latitude DECIMAL(9,6),
+    longitude DECIMAL(9,6)
+);
+
+/* EXPERIENCES */
+
+DROP TABLE IF EXISTS experiences;
+
+CREATE TABLE experiences (
+    experienceID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    locationID INT NOT NULL,
+    title VARCHAR(150) NOT NULL,
+    experienceDescription TEXT,
+    estimatedCost varchar(50),
+    timeCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (locationID) REFERENCES locations(locationID)
+        ON DELETE CASCADE
+);
+
+/* REVIEWS */
+
+DROP TABLE IF EXISTS reviews;
+
+CREATE TABLE reviews (
+    reviewID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userID INT NOT NULL,
+    experienceID INT NOT NULL,
+    title VARCHAR(150),
+    body TEXT,
+    rating INT CHECK (rating >= 1 AND rating <= 5),
+    timeCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (userID) REFERENCES users(userID)
+        ON DELETE CASCADE,
+    FOREIGN KEY (experienceID) REFERENCES experiences(experienceID)
+        ON DELETE CASCADE,
+    
+    UNIQUE (userID, experienceID) -- one review per user per experience
+);
+
+/* TAGS */
+
+DROP TABLE IF EXISTS tags;
+
+CREATE TABLE tags (
+    tagID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    tagName varchar(50) UNIQUE NOT NULL
+);
+
+DROP TABLE IF EXISTS experience_tags;
+
+CREATE TABLE experience_tags (
+    experienceID INT NOT NULL,
+    tagID INT NOT NULL,
+
+    PRIMARY KEY (experienceID, tagID),
+    FOREIGN KEY (experienceID) REFERENCES experiences(experienceID)
+        ON DELETE CASCADE,
+    FOREIGN KEY (tagID) REFERENCES tags(tagID)
+        ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS review_tags;
+
+CREATE TABLE review_tags (
+    reviewID INT NOT NULL,
+    tagID INT NOT NULL,
+
+    PRIMARY KEY (reviewID, tagID),
+    FOREIGN KEY (reviewID) REFERENCES reviews(reviewID)
+        ON DELETE CASCADE,
+    FOREIGN KEY (tagID) REFERENCES tags(tagID)
+        ON DELETE CASCADE
+);
+
+/* IMAGES */
+
+DROP TABLE IF EXISTS experience_images;
+
+CREATE TABLE experience_images (
+    imageID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    experienceID INT NOT NULL,
+    imageURL TEXT NOT NULL,
+
+    FOREIGN KEY (experienceID) REFERENCES experiences(experienceID)
+        ON DELETE CASCADE 
+);
+
+DROP TABLE IF EXISTS review_images;
+
+CREATE TABLE review_images (
+    imageID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    reviewID INT NOT NULL,
+    imageURL TEXT NOT NULL,
+
+    FOREIGN KEY (reviewID) REFERENCES reviews(reviewID)
+        ON DELETE CASCADE
+);
+
+/* TRIPS */
+
+DROP TABLE IF EXISTS trips;
+
+CREATE TABLE trips (
+    tripID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userID INT NOT NULL,
+    title VARCHAR(150) NOT NULL,
+    tripDescription TEXT,
+    startDate DATE,
+    endDate DATE,
+    timeCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (userID) REFERENCES users(userID)
+        ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS trip_experiences;
+
+CREATE TABLE trip_experiences (
+    tripExperienceID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    tripID INT NOT NULL,
+    experienceID INT NOT NULL,
+    dayNumber INT,
+    orderIndex INT,
+    
+    FOREIGN KEY (tripID) REFERENCES trips(tripID)
+        ON DELETE CASCADE,
+    FOREIGN KEY (experienceID) REFERENCES experiences(experienceID)
+        ON DELETE CASCADE
+);
+
+/* INDEXES */
+
+CREATE INDEX idx_experiences_location ON experiences(locationID);
+CREATE INDEX idx_reviews_experiences ON reviews(experienceID);
+CREATE INDEX idx_reviews_user ON reviews(userID);
+CREATE INDEX idx_experience_tags_tag ON experience_tags(tagID);
+CREATE INDEX idx_tags_name ON tags(tagName);
+
+SET FOREIGN_KEY_CHECKS=1;

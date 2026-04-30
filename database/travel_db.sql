@@ -37,6 +37,8 @@ CREATE TABLE experiences (
     title VARCHAR(150) NOT NULL,
     experienceDescription TEXT,
     estimatedCost varchar(50),
+    estimatedTime varchar(100),
+    tags varchar(100),
     timeCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (locationID) REFERENCES locations(locationID)
@@ -62,41 +64,6 @@ CREATE TABLE reviews (
         ON DELETE CASCADE,
     
     UNIQUE (userID, experienceID) -- one review per user per experience
-);
-
-/* TAGS */
-
-DROP TABLE IF EXISTS tags;
-
-CREATE TABLE tags (
-    tagID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    tagName varchar(50) UNIQUE NOT NULL
-);
-
-DROP TABLE IF EXISTS experience_tags;
-
-CREATE TABLE experience_tags (
-    experienceID INT NOT NULL,
-    tagID INT NOT NULL,
-
-    PRIMARY KEY (experienceID, tagID),
-    FOREIGN KEY (experienceID) REFERENCES experiences(experienceID)
-        ON DELETE CASCADE,
-    FOREIGN KEY (tagID) REFERENCES tags(tagID)
-        ON DELETE CASCADE
-);
-
-DROP TABLE IF EXISTS review_tags;
-
-CREATE TABLE review_tags (
-    reviewID INT NOT NULL,
-    tagID INT NOT NULL,
-
-    PRIMARY KEY (reviewID, tagID),
-    FOREIGN KEY (reviewID) REFERENCES reviews(reviewID)
-        ON DELETE CASCADE,
-    FOREIGN KEY (tagID) REFERENCES tags(tagID)
-        ON DELETE CASCADE
 );
 
 /* IMAGES */

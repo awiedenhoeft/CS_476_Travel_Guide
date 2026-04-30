@@ -18,31 +18,12 @@ VALUES
 
 /* SAMPLE EXPERIENCES */
 
-INSERT INTO experiences (locationID, title, experienceDescription, estimatedCost)
+INSERT INTO experiences (locationID, title, experienceDescription, estimatedCost, estimatedTime, tags)
 VALUES
-(1, 'Eiffel Tower Visit', 'Climb and enjoy panoramic views of Paris.', '$$'),
-(2, 'Shibuya Crossing Walk', 'Experience the busiest crossing in the world.', 'Free'),
-(3, 'Central Park Picnic', 'Relax in NYC’s most famous park.', '$'),
-(4, 'Colosseum Tour', 'Guided tour of ancient Roman amphitheater.', '$$');
-
-/* SAMPLE TAGS */
-
-INSERT INTO tags (tagName)
-VALUES
-('sightseeing'),
-('food'),
-('nature'),
-('history'),
-('urban');
-
-/* SAMPLE EXPERIENCE TAGS */
-
-INSERT INTO experience_tags (experienceID, tagID)
-VALUES
-(5, 1), -- Eiffel Tower → sightseeing
-(6, 5), -- Shibuya → urban
-(7, 3), -- Central Park → nature
-(8, 4); -- Colosseum → history
+(1, 'Eiffel Tower Visit', 'Climb and enjoy panoramic views of Paris.', '$$'), '2-3 hours', 'sightseeing',
+(2, 'Shibuya Crossing Walk', 'Experience the busiest crossing in the world.', 'Free', '1 hour', 'urban'),
+(3, 'Central Park Picnic', 'Relax in NYC’s most famous park.', '$', '1-2 hours', 'nature'),
+(4, 'Colosseum Tour', 'Guided tour of ancient Roman amphitheater.', '$$', '2-3 hours', 'history');
 
 /* SAMPLE REVIEWS */
 
@@ -52,15 +33,6 @@ VALUES
 (2, 6, 'So crowded!', 'Cool experience but very busy.', 4),
 (3, 7, 'Relaxing afternoon', 'Perfect picnic spot.', 5),
 (4, 8, 'Incredible history', 'A must-see in Rome.', 5);
-
-/* SAMPLE REVIEW TAGS */
-
-INSERT INTO review_tags (reviewID, tagID)
-VALUES
-(5, 1),
-(6, 5),
-(7, 3),
-(8, 4);
 
 /* SAMPLE EXPERIENCE IMAGES */
 

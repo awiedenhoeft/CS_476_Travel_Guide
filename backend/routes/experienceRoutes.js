@@ -40,6 +40,11 @@ router.get('/', (req, res) => {
 // Gets one experience from a specific id. 
 router.get('/:id', (req, res) => {
     const experienceId = parseInt(req.params.id);
+
+    if(isNaN(experienceId)){
+        return res.status(400).json({ error: 'Invalid experience ID'});
+    }
+    
     const foundExperience = experiences.find(
         experience => experience.id === experienceId
     );
@@ -59,6 +64,23 @@ router.post('/', (req, res) => {
 
     if (!title || !username || !userId || !location || !description) {
         return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    // Makes sure required text fields are not only blank spaces.
+    if (title.trim() === '') {
+        return res.status(400).json({ error: 'Title cannot be empty' });
+    }
+
+    if (username.trim() === '') {
+        return res.status(400).json({ error: 'Username cannot be empty' });
+    }
+
+    if (location.trim() === '') {
+        return res.status(400).json({ error: 'Location cannot be empty' });
+    }
+
+    if (description.trim() === '') {
+        return res.status(400).json({ error: 'Description cannot be empty' });
     }
 
     const newExperience = {
@@ -81,5 +103,6 @@ router.post('/', (req, res) => {
 
     res.status(201).json(newExperience);
 });
+
 
 module.exports = router;

@@ -25,6 +25,11 @@ body {
     font-size: 2rem;
 }
 
+.home {
+    background: #0278FF61;
+}
+
+
 .nav ul {
     padding: 0;
     margin: 0;

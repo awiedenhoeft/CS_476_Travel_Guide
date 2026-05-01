@@ -1,8 +1,9 @@
 export default function Navbar() {
     return ( <nav className="nav">
         <a href="/" className="brand-name">Wanderly</a>
-        <h3>rediscover travel</h3>
+        <h2>rediscover travel</h2>
         <ul>
+            <input type="text" id="search" placeholder="Get inspired..."></input>
             <CustomLink href="/search">Search</CustomLink>
             <CustomLink href="/map">Map</CustomLink>
             <CustomLink href="/quiz">Quiz</CustomLink>

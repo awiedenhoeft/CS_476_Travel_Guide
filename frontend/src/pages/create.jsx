@@ -7,8 +7,10 @@ export default function Create() {
 
     return (
         <>
-            <h1>Create Review</h1>
-            <ReviewForm onSubmit={handleCreate} />
+            <div className="create">
+                <ReviewForm onSubmit={handleCreate} />
+            </div>
+            
         </>
     )
 }

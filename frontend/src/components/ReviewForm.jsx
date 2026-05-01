@@ -1,5 +1,6 @@
 import { useState } from "react";
- 
+import "../styles.css"; 
+
 export default function ReviewForm( { onSubmit }) {
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,6 +23,7 @@ export default function ReviewForm( { onSubmit }) {
     return <>
     <div>
         <form className="review-form" onSubmit={handleSubmit}>
+            <h1>Create Review</h1>
 
             <div>
                 <label htmlFor="title">Title</label> <br/>
@@ -35,24 +37,22 @@ export default function ReviewForm( { onSubmit }) {
         
 
             <div>
-                <p>Price</p>
+                <label>Price</label><br/>
+                <select name="price" id="price">
+                    <option value="price1">$</option>
+                    <option value="price2">$$</option>
+                    <option value="price3">$$$</option>
+                    <option value="price4">$$$$</option>
+                </select>
 
-                <input type="radio" id="price1" name="price" value="1" defaultChecked></input>
-                <label htmlFor="price1">$</label><br/>
-
-                <input type="radio" id="price2" name="price" value="2"></input>
-                <label htmlFor="price2">$$</label><br/>
-
-                <input type="radio" id="price3" name="price" value="3"></input>
-                <label htmlFor="price3">$$$</label><br/>
-
-                <input type="radio" id="price4" name="price" value="4"></input>
-                <label htmlFor="price4">$$$$</label><br/>
             </div>
 
             <div>
                 <label htmlFor="duration">Duration</label><br/>
-                <input type="text" id="duration" name="duration"></input><br/>
+                <select name="duration" id="duration">
+                    <option value="day">One day</option>
+                    <option value="week">Week</option>
+                </select>
             </div>
 
             <div>

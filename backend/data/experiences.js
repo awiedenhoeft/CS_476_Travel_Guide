@@ -10,12 +10,21 @@ const experiences = [
         images: ['https://testing.com/SF.jpg'],
         tags: ['Fun', 'Cloudy', 'Bridge'],
         location: 'San Francisco, California',
+        city: 'San Francisco',
+        state: 'California',
+        country: 'United States',
         address: 'Golden Gate Bridge',
         description: 'Lovely sunrise at the Golden Gate Bridge',
+        priceRange: '$',
+        duration: '2 hours',
+        timeOfDay: 'Morning',
+        dayOfWeek: 'Saturday',
+        season: 'Spring',
         likes: 100,
         rating: 5.0,
         reviewCount: 10,
-        savedBy: [101, 102]
+        savedBy: [101, 102],
+        reviews: []
     },
     {
         id: 2,
@@ -25,12 +34,21 @@ const experiences = [
         images: ['https://testing.com/pizza.jpg'],
         tags: ['Family Business', 'hidden gem', 'food'],
         location: 'Chicago, Illinois',
+        city: 'Chicago',
+        state: 'Illinois',
+        country: 'United States',
         address: '123 Fake Street, Chicago',
         description: 'The best place for a deep dish pizza.',
+        priceRange: '$',
+        duration: '1 hour',
+        timeOfDay: 'Evening',
+        dayOfWeek: 'Friday',
+        season: 'Winter',
         likes: 80,
         rating: 4.1,
         reviewCount: 10,
-        savedBy: [101]
+        savedBy: [101],
+        reviews: []
     },
     {
         id: 3,
@@ -40,12 +58,21 @@ const experiences = [
         images: ['https://testing.com/Disneyland.jpg'],
         tags: ['Mickey', 'Disney', 'Theme Park'],
         location: 'Anaheim, California',
+        city: 'Anaheim',
+        state: 'California',
+        country: 'United States',
         address: 'SoCal',
         description: 'Literally the happiest place on Earth!',
+        priceRange: '$$$',
+        duration: 'Full day',
+        timeOfDay: 'Afternoon',
+        dayOfWeek: 'Sunday',
+        season: 'Summer',
         likes: 200,
         rating: 4.5,
         reviewCount: 105,
-        savedBy: [102, 103]
+        savedBy: [102, 103],
+        reviews: []
     }
 ];
 

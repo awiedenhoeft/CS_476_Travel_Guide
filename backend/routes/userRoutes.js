@@ -7,7 +7,7 @@ router.get('/:userId/saved-experiences', (req, res) => {
     const userId = parseInt(req.params.userId);
 
     if (isNaN(userId)) {
-        return res.status(400).json({ error: 'Invalid user ID' });
+        return res.status(400).json({error: 'Invalid user ID'});
     }
 
     const savedExperiences = experiences.filter(
@@ -22,7 +22,7 @@ router.get('/:userId/experiences', (req, res) => {
     const userId = parseInt(req.params.userId);
 
     if (isNaN(userId)) {
-        return res.status(400).json({ error: 'Invalid user ID' });
+        return res.status(400).json({error: 'Invalid user ID'});
     }
 
     const userExperiences = experiences.filter(

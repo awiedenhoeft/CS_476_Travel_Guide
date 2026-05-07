@@ -4,6 +4,7 @@ require('dotenv').config();
 
 const experienceRoutes = require('./routes/experienceRoutes');
 const userRoutes = require('./routes/userRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+app.use('/api/experiences/:id/reviews', reviewRoutes);
 app.use('/api/experiences', experienceRoutes);
 app.use('/api/users', userRoutes);
 

@@ -15,14 +15,14 @@ const experiences = [
         country: 'United States',
         address: 'Golden Gate Bridge',
         description: 'Lovely sunrise at the Golden Gate Bridge',
-        priceRange: '$',
+        priceRange: '$$',
         duration: '2 hours',
         timeOfDay: 'Morning',
         dayOfWeek: 'Saturday',
         season: 'Spring',
         likes: 100,
-        rating: 5.0,
-        reviewCount: 10,
+        rating: 0,
+        reviewCount: 0,
         savedBy: [101, 102],
         reviews: []
     },
@@ -39,14 +39,14 @@ const experiences = [
         country: 'United States',
         address: '123 Fake Street, Chicago',
         description: 'The best place for a deep dish pizza.',
-        priceRange: '$',
+        priceRange: '$$',
         duration: '1 hour',
         timeOfDay: 'Evening',
         dayOfWeek: 'Friday',
         season: 'Winter',
         likes: 80,
-        rating: 4.1,
-        reviewCount: 10,
+        rating: 0,
+        reviewCount: 0,
         savedBy: [101],
         reviews: []
     },
@@ -69,10 +69,25 @@ const experiences = [
         dayOfWeek: 'Sunday',
         season: 'Summer',
         likes: 200,
-        rating: 4.5,
-        reviewCount: 105,
+        rating: 5.0,
+        reviewCount: 1,
         savedBy: [102, 103],
-        reviews: []
+        reviews: [
+            {
+                id: 1,
+                userId: 101,
+                username: 'Frequent_Traveler',
+                travelStyle: 'Adventure',
+                title: 'Disney Fun!',
+                location: 'Anaheim, California',
+                priceRange: '$$$',
+                duration: 'Full day',
+                tags: ['Disney', 'Theme Park'],
+                rating: 5,
+                description: 'There was a lot to do! Definitely check out the Haunted Mansion :D',
+                image: 'https://testing.com/disneyreview1.jpg'
+            }
+        ]
     }
 ];
 

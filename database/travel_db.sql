@@ -40,6 +40,9 @@ CREATE TABLE experiences (
     estimatedCost varchar(50),
     estimatedTime varchar(100),
     tagID varchar(150),
+    hoursOpen varchar(150),
+    daysOpen varchar(150),
+    season varchar(150),
     timeCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (locationID) REFERENCES locations(locationID)

@@ -18,6 +18,7 @@ VALUES (
 DELETE FROM users WHERE username = :selectedUser;
 
 -- user login
+SELECT userID, passwordHash FROM users WHERE username = :usernameInput;
 
 /** CREATE EXPERIENCE **/
 
@@ -30,7 +31,7 @@ VALUES (
     :expTimeInput,
     :expTags_from_dropdown_input,
     :expHoursInput,
-    :expDaysInput,
+    :expDaysInput
 );
 
 /** EXPERIENCE DISPLAY **/
@@ -40,16 +41,13 @@ SELECT (title, experienceDescription, estimatedCost, estimatedTime, tags, hoursO
 /** CREATE REVIEW **/
 
 -- Display reviews 
-SELECT (title, body, rating, estimatedCost, estimatedTime) AS (Title, Review, Rating, Cost, Duration) FROM reviews;
+SELECT title AS "Title", body AS "Review", rating AS "Rating", estimatedCost AS "Estimated Cost", estimatedTime AS "Estimated Duration" FROM reviews;
 
 -- Sort reviews by travel style
 
 
 /** SEARCH **/
--- Search for experience by name
-SELECT * FROM experiences WHERE title = :experienceTitleInput;
-
--- Search for experience by keyword
-SELECT * FROM experiences WHERE title LIKE '%searchterm%';
+-- Search for experience by name or keyword
+SELECT * FROM experiences WHERE title LIKE CONCAT('%', :searchterm, '%');
 
 /** QUIZ **/

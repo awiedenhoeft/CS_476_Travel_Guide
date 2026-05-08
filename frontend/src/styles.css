@@ -25,6 +25,20 @@ body {
     font-size: 2rem;
 }
 
+body {
+    margin: 0;
+}
+
+.home {
+    background: #0278FF61;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    min-height: 100vh;
+    padding: 20px 0;
+} 
+
 .nav ul {
     padding: 0;
     margin: 0;
@@ -50,3 +64,30 @@ body {
     background-color: #777;
 }
 
+.post {
+    background-color: #ffffff;
+    width: 500px;
+    height: 500px;
+}
+
+.post post-title {
+    justify-content: center;
+    align-items: center;
+}
+
+.create {
+    background-color: #FFD00261;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    min-height: 100vh;
+    padding: 20px 0;
+}
+
+.review-form {
+    background-color: #ffffff;
+    width: 500px;
+    height: 500px;
+    padding: 0 20px 0 20px;
+}

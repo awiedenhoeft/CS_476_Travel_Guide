@@ -6,6 +6,10 @@ const experiences = require('../data/experiences');
 router.get('/:userId/saved-experiences', (req, res) => {
     const userId = parseInt(req.params.userId);
 
+    if (isNaN(userId)) {
+        return res.status(400).json({error: 'Invalid user ID'});
+    }
+
     const savedExperiences = experiences.filter(
         experience => experience.savedBy.includes(userId)
     );
@@ -16,6 +20,10 @@ router.get('/:userId/saved-experiences', (req, res) => {
 // This gets all the experiences of a specific user.
 router.get('/:userId/experiences', (req, res) => {
     const userId = parseInt(req.params.userId);
+
+    if (isNaN(userId)) {
+        return res.status(400).json({error: 'Invalid user ID'});
+    }
 
     const userExperiences = experiences.filter(
         experience => experience.userId === userId

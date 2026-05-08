@@ -18,12 +18,12 @@ VALUES
 
 /* SAMPLE EXPERIENCES */
 
-INSERT INTO experiences (locationID, title, experienceDescription, estimatedCost, estimatedTime, tags)
+INSERT INTO experiences (locationID, userID, title, experienceDescription, estimatedCost, estimatedTime, tags, hoursOpen, daysOpen, season)
 VALUES
-(1, 'Eiffel Tower Visit', 'Climb and enjoy panoramic views of Paris.', '$$'), '2-3 hours', 'sightseeing',
-(2, 'Shibuya Crossing Walk', 'Experience the busiest crossing in the world.', 'Free', '1 hour', 'urban'),
-(3, 'Central Park Picnic', 'Relax in NYC’s most famous park.', '$', '1-2 hours', 'nature'),
-(4, 'Colosseum Tour', 'Guided tour of ancient Roman amphitheater.', '$$', '2-3 hours', 'history');
+(1, 2, 'Eiffel Tower Visit', 'Climb and enjoy panoramic views of Paris.', '$$', '2-3 hours', 'sightseeing', '9:30 AM - 11 PM', 'Open Daily', NULL),
+(2, 3, 'Shibuya Crossing Walk', 'Experience the busiest crossing in the world.', 'Free', '1 hour', 'urban', 'Open 24 Hours', 'Open Daily', NULL),
+(3, 1, 'Central Park Picnic', 'Relax in NYC’s most famous park.', '$', '1-2 hours', 'nature', 'Open 24 Hours', 'Open Daily', NULL),
+(4, 4, 'Colosseum Tour', 'Guided tour of ancient Roman amphitheater.', '$$', '2-3 hours', 'history', '8:30 AM - 5 PM', 'Open Daily', NULL);
 
 /* SAMPLE REVIEWS */
 
@@ -64,3 +64,13 @@ VALUES
 (1, 5, 1, 1), -- Eiffel Tower on Day 1
 (1, 8, 3, 1), -- Colosseum on Day 3
 (2, 6, 1, 1); -- Shibuya on Day 1
+
+/* SAMPLE TAGS */
+INSERT INTO tags (tagName)
+VALUES 
+('#social'),
+('#food'),
+('#culture'),
+('#adventure'),
+('#relaxation'),
+('#nature');

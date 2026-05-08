@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS locations;
 CREATE TABLE locations (
     locationID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     city VARCHAR(100),
-    state VARCHAR(100),
+    locationState VARCHAR(100),
     country VARCHAR(100),
     latitude DECIMAL(9,6),
     longitude DECIMAL(9,6)
@@ -34,14 +34,17 @@ DROP TABLE IF EXISTS experiences;
 CREATE TABLE experiences (
     experienceID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     locationID INT NOT NULL,
+    userID INT NOT NULL,
     title VARCHAR(150) NOT NULL,
     experienceDescription TEXT,
     estimatedCost varchar(50),
     estimatedTime varchar(100),
-    tags varchar(100),
+    tagID varchar(150),
     timeCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (locationID) REFERENCES locations(locationID)
+        ON DELETE CASCADE,
+    FOREIGN KEY (tagID) REFERENCES tags(tagID)
         ON DELETE CASCADE
 );
 
@@ -122,12 +125,19 @@ CREATE TABLE trip_experiences (
         ON DELETE CASCADE
 );
 
+/* TAGS */
+DROP TABLE IF EXISTS tags;
+
+CREATE TABLE tags (
+    tagID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    tagName varchar(150),
+);
+
 /* INDEXES */
 
 CREATE INDEX idx_experiences_location ON experiences(locationID);
 CREATE INDEX idx_reviews_experiences ON reviews(experienceID);
 CREATE INDEX idx_reviews_user ON reviews(userID);
-CREATE INDEX idx_experience_tags_tag ON experience_tags(tagID);
 CREATE INDEX idx_tags_name ON tags(tagName);
 
 SET FOREIGN_KEY_CHECKS=1;

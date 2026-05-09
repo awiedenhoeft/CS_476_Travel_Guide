@@ -23,6 +23,7 @@ CREATE TABLE locations (
     city VARCHAR(100),
     locationState VARCHAR(100),
     country VARCHAR(100),
+    locationAddress VARCHAR(150),
     latitude DECIMAL(9,6),
     longitude DECIMAL(9,6)
 );
@@ -37,8 +38,11 @@ CREATE TABLE experiences (
     userID INT NOT NULL,
     title VARCHAR(150) NOT NULL,
     experienceDescription TEXT,
-    estimatedCost varchar(50),
-    estimatedTime varchar(100),
+    cost varchar(50),
+    duration varchar(100),
+    hoursOpen varchar(100),
+    daysOpen varchar(100),
+    season varchar(100),
     tagID varchar(150),
     timeCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
@@ -59,6 +63,8 @@ CREATE TABLE reviews (
     title VARCHAR(150),
     body TEXT,
     rating INT CHECK (rating >= 1 AND rating <= 5),
+    cost varchar(50),
+    duration varchar(100),
     timeCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (userID) REFERENCES users(userID)
@@ -71,26 +77,15 @@ CREATE TABLE reviews (
 
 /* IMAGES */
 
-DROP TABLE IF EXISTS experience_images;
+DROP TABLE IF EXISTS images;
 
-CREATE TABLE experience_images (
-    imageID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    experienceID INT NOT NULL,
-    imageURL TEXT NOT NULL,
-
-    FOREIGN KEY (experienceID) REFERENCES experiences(experienceID)
-        ON DELETE CASCADE 
-);
-
-DROP TABLE IF EXISTS review_images;
-
-CREATE TABLE review_images (
+CREATE TABLE images (
     imageID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     reviewID INT NOT NULL,
     imageURL TEXT NOT NULL,
 
-    FOREIGN KEY (reviewID) REFERENCES reviews(reviewID)
-        ON DELETE CASCADE
+    FOREIGN KEY (experienceID) REFERENCES experiences(experienceID)
+        ON DELETE CASCADE 
 );
 
 /* TRIPS */
@@ -130,7 +125,7 @@ DROP TABLE IF EXISTS tags;
 
 CREATE TABLE tags (
     tagID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    tagName varchar(150),
+    tagName varchar(150)
 );
 
 /* INDEXES */

@@ -9,6 +9,9 @@ SELECT tagName AS "Tag" FROM tags;
 SELECT username AS "Username", travelStyle AS "Travel Style" FROM users;
 
 -- user login
+SELECT userID, username, userEmail FROM users 
+WHERE username = :usernameInput 
+AND password_hash = :hashedPWInput;
 
 /** EXPERIENCES **/
 -- add data on creating experience

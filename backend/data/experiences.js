@@ -23,7 +23,7 @@ const experiences = [
         likes: 100,
         rating: 0,
         reviewCount: 0,
-        savedBy: [101, 102],
+        savedBy: [101],
         reviews: []
     },
     {

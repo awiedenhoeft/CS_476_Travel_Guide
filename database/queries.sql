@@ -1,20 +1,27 @@
 /** HOME PAGE **/
--- Display highest-rated experience for user's travel style
+/* Display highest-rated experience for user's travel style */
 
--- Display tags for filtering
-SELECT tagName AS "Tag" FROM tags;
+/* Display tags for filtering */
+SELECT tagName as "Tag" FROM tags;
 
 /** USERS **/
--- display user info
-SELECT username AS "Username", travelStyle AS "Travel Style" FROM users;
+-- create new user
+INSERT INTO users (username, fullName, userEmail, passwordHash)
+VALUES (
+    :usernameInput,
+    :fullNameInput,
+    :userEmailInput,
+    :passwordInput
+);
+
+-- delete user
+DELETE FROM users WHERE username = :selectedUser;
 
 -- user login
-SELECT userID, username, userEmail FROM users 
-WHERE username = :usernameInput 
-AND password_hash = :hashedPWInput;
 
-/** EXPERIENCES **/
--- add data on creating experience
+/** CREATE EXPERIENCE **/
+
+/* Insert data on creating experience */
 INSERT INTO experiences (title, experienceDescription, estimatedCost, estimatedTime, tags, hoursOpen, daysOpen)
 VALUES (
     :expTitleInput,

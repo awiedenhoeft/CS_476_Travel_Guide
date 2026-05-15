@@ -63,7 +63,7 @@ export default function ReviewForm( { onSubmit }) {
 
             <div>
                 <label htmlFor="rating">Rating</label><br/>
-                <input type="text" id="rating" name="rating"></input><br/>
+                <input type="text" id="rating" name="rating" required></input><br/>
             </div>
 
             <div>

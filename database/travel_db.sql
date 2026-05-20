@@ -35,6 +35,7 @@ CREATE TABLE experiences (
     experienceID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     locationID INT NOT NULL,
     userID INT NOT NULL,
+    tagID INT,
     title VARCHAR(150) NOT NULL,
     experienceDescription TEXT,
     cost varchar(50),
@@ -42,7 +43,6 @@ CREATE TABLE experiences (
     hoursOpen varchar(100),
     daysOpen varchar(100),
     season varchar(100),
-    tagID varchar(150),
     timeCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (locationID) REFERENCES locations(locationID)
@@ -83,9 +83,6 @@ CREATE TABLE images (
     imageID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     reviewID INT NOT NULL,
     imageURL TEXT NOT NULL,
-
-    FOREIGN KEY (experienceID) REFERENCES experiences(experienceID)
-        ON DELETE CASCADE 
 );
 
 /* TRIPS */

@@ -1,6 +1,6 @@
 /* SAMPLE USERS */
 
-INSERT INTO users (username, fullName, userEmail, passwordHash)
+INSERT INTO users (username, userEmail, passwordHash)
 VALUES
 ('alex123', 'alex@example.com', 'hashed_pw_1'),
 ('katie_ui', 'katie@example.com', 'hashed_pw_2'),
@@ -66,11 +66,11 @@ VALUES
 (2, 6, 1, 1); -- Shibuya on Day 1
 
 /* SAMPLE TAGS */
-INSERT INTO tags (tagName)
+INSERT INTO tags (tagName, creator)
 VALUES 
-('#social'),
-('#food'),
-('#culture'),
-('#adventure'),
-('#relaxation'),
-('#nature');
+('#social', 'admin'),
+('#food', 'admin'),
+('#culture', 'admin'),
+('#adventure', 'admin'),
+('#relaxation', 'admin'),
+('#nature', 'admin');

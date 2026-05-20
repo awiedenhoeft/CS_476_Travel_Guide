@@ -1,11 +1,11 @@
 /* SAMPLE USERS */
 
-INSERT INTO users (username, fullName, userEmail, passwordHash, travelStyle)
+INSERT INTO users (username, fullName, userEmail, passwordHash)
 VALUES
-('alex123', 'Alex Johnson', 'alex@example.com', 'hashed_pw_1', 'adventure'),
-('katie_ui', 'Katie Smith', 'katie@example.com', 'hashed_pw_2', 'relaxation'),
-('josh_dev', 'Joshua Lee', 'josh@example.com', 'hashed_pw_3', 'culture'),
-('kevin_api', 'Kevin Brown', 'kevin@example.com', 'hashed_pw_4', 'social');
+('alex123', 'alex@example.com', 'hashed_pw_1'),
+('katie_ui', 'katie@example.com', 'hashed_pw_2'),
+('josh_dev', 'josh@example.com', 'hashed_pw_3'),
+('kevin_api', 'kevin@example.com', 'hashed_pw_4');
 
 /* SAMPLE LOCATIONS */
 

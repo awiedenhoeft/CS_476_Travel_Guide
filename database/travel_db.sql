@@ -7,7 +7,6 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
     userID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
-    fullName VARCHAR(100),
     userEmail VARCHAR(100) UNIQUE NOT NULL,
     passwordHash VARCHAR(255) NOT NULL,
     travelStyle VARCHAR(50),
@@ -44,15 +43,13 @@ CREATE TABLE experiences (
     daysOpen varchar(100),
     season varchar(100),
     tagID varchar(150),
-    hoursOpen varchar(150),
-    daysOpen varchar(150),
-    season varchar(150),
     timeCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (locationID) REFERENCES locations(locationID)
         ON DELETE CASCADE,
     FOREIGN KEY (tagID) REFERENCES tags(tagID)
-        ON DELETE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY (userID) REFERENCES users(userID)
 );
 
 /* REVIEWS */
@@ -128,8 +125,10 @@ DROP TABLE IF EXISTS tags;
 
 CREATE TABLE tags (
     tagID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    tagName varchar(150)
+    tagName varchar(150),
+    creator varchar(100)
 );
+
 
 /* INDEXES */
 

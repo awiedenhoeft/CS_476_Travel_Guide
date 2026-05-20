@@ -2,7 +2,8 @@
 /* Display highest-rated experience for user's travel style */
 
 /* Display tags for filtering */
-SELECT tagName as "Tag" FROM tags;
+SELECT tagName as "Tag" FROM tags
+WHERE tags(creator) = "admin";
 
 /** USERS **/
 -- create new user
